@@ -9,16 +9,17 @@ namespace WPfF_Turn_based_Game
         private Character playerOne;
         private Character playerTwo;
         private Character currentPlayer;
+        private bool gameStart = false;
 
         public MainWindow()
         {
+
             InitializeComponent();
-            playerOne = new Character("dave", 10, 12, 4);
-            playerTwo = new Character("bex", 10, 12, 4);
-            currentPlayer = playerOne;
-            playOneStats.Text = $"Name : {playerOne.Name}\nHealth : {playerOne.Health}\nStrength : {playerOne.Strength}\n Weapon: {playerOne.EquippedWeapon.Type}";
-            playTwoStats.Text = $"Name : {playerTwo.Name}\nHealth : {playerTwo.Health}\nStrength : {playerTwo.Strength}\n Weapon: {playerTwo.EquippedWeapon.Type}";
-            UpdateStatus($"{currentPlayer.Name}'s turn");
+            playerOne = new Character("Dave", 10, 12, 4);
+            playerTwo = new Character("Bex", 10, 12, 4);
+            //StartGame();
+
+
         }
 
         private void AttackButton_Click(object sender, RoutedEventArgs e)
@@ -36,12 +37,8 @@ namespace WPfF_Turn_based_Game
 
 
                 // Update UI and status
-                playOneStats.Text = $"Name : {playerOne.Name}\nHealth : {playerOne.Health}\nStrength : {playerOne.Strength}\n Weapon: {playerOne.EquippedWeapon.Type}";
-                playTwoStats.Text = $"Name : {playerTwo.Name}\nHealth : {playerTwo.Health}\nStrength : {playerTwo.Strength}\n Weapon: {playerTwo.EquippedWeapon.Type}";
-                //playOneStats.Text = $"Name : {playerOne.Name}\nHealth : {playerOne.Health}\nStrength : {playerOne.Strength}";
-                //playTwoStats.Text = $"Name : {playerTwo.Name}\nHealth : {playerTwo.Health}\nStrength : {playerTwo.Strength}";
-                //UpdateStatus($"{currentPlayer.Name}'s turn");
-                // UpdateStatus($"{currentPlayer.Name}'s turn");
+                Display_Stats();
+
             }
             else
             {
@@ -72,6 +69,39 @@ namespace WPfF_Turn_based_Game
 
             }
             Display_Stats();
+        }
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            // Toggle the gameStart variable
+            gameStart = !gameStart;
+
+            // If the game is starting, initialize the game
+            if (gameStart)
+            {
+                StartGame();
+                StartButton.Content = "QUIT";
+            }
+            else
+            {
+                // Reset the game state
+                playerOne = new Character("Dave", 10, 12, 4);
+                playerTwo = new Character("Bex", 10, 12, 4);
+                currentPlayer = playerOne;
+
+                // Update UI and status
+                Display_Stats();
+
+                StartButton.Content = "START";
+            }
+        }
+        private void StartGame()
+        {
+            //playerOne = new Character("dave", 10, 12, 4);
+            //playerTwo = new Character("bex", 10, 12, 4);
+            currentPlayer = playerOne;
+            playOneStats.Text = $"Name : {playerOne.Name}\nHealth : {playerOne.Health}\nStrength : {playerOne.Strength}\n Weapon: {playerOne.EquippedWeapon.Type}";
+            playTwoStats.Text = $"Name : {playerTwo.Name}\nHealth : {playerTwo.Health}\nStrength : {playerTwo.Strength}\n Weapon: {playerTwo.EquippedWeapon.Type}";
+            UpdateStatus($"{currentPlayer.Name}'s turn");
         }
         public void Display_Stats()
         {

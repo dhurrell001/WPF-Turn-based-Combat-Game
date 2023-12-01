@@ -18,10 +18,18 @@ namespace WPfF_Turn_based_Game
                 defender.RemoveHealth(attackDamage);
                 statusBar.Text += $"You struck {defender.Name} causing {attackDamage} points of damage\n";
 
-                ClearTextBoxDelay(statusBar, 3000);
-                await Task.Delay(3500);
-                statusBar.Text = ($"{defender.Name}'s turn\n");
-                ClearTextBoxDelay(statusBar, 3000);
+                ClearTextBoxDelay(statusBar, 2500);
+                await Task.Delay(3000);
+
+                if (!defender.IsAlive)
+                {
+                    statusBar.Text = ($"{defender.Name} is dead. Game Over\n");
+                }
+                else
+                {
+                    statusBar.Text = ($"{defender.Name}'s turn\n");
+                    ClearTextBoxDelay(statusBar, 2500);
+                }
 
 
             }
@@ -36,11 +44,11 @@ namespace WPfF_Turn_based_Game
 
             statusBar.Text += $"{defender.Name}'s current health is {defender.Health}\n";
 
-            if (!defender.IsAlive)
-            {
-                statusBar.Text += $"\nYou delivered a fatal blow !!\n";
-                statusBar.Text += $"\n==== {defender.Name} is dead. ====\n";
-            }
+            //if (!defender.IsAlive)
+            //{
+            //    statusBar.Text += $"\nYou delivered a fatal blow !!\n";
+            //    statusBar.Text += $"\n==== {defender.Name} is dead. ====\n";
+            //}
         }
         public async static void ClearTextBoxDelay(TextBox textBox, int delayMilliseconds)
         {
