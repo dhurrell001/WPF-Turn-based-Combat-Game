@@ -28,6 +28,10 @@ namespace WPfF_Turn_based_Game
             else
             {
                 statusBar.Text += $"{defender.Name} skillfully blocked your attack\n";
+                ClearTextBoxDelay(statusBar, 3000);
+                await Task.Delay(3500);
+                statusBar.Text = ($"{defender.Name}'s turn\n");
+                ClearTextBoxDelay(statusBar, 3000);
             }
 
             statusBar.Text += $"{defender.Name}'s current health is {defender.Health}\n";

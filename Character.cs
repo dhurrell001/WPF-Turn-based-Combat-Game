@@ -11,6 +11,7 @@ namespace WPfF_Turn_based_Game
         public int Health { get; set; }
         public int Speed { get; set; }
         public bool IsAlive { get; set; }
+        public int Health_Potion { get; set; }
         public List<Weapon> WeaponsList { get; set; } //create a list to store weapons
 
 
@@ -34,6 +35,7 @@ namespace WPfF_Turn_based_Game
             Speed = speed;
             WeaponsList = new List<Weapon>();
             EquippedWeapon = new Weapon("Fist", 3, 3, 1);
+            Health_Potion = 1;
         }
 
         //Methods

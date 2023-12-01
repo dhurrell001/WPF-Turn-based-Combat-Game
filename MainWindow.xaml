@@ -43,7 +43,7 @@
         <TextBox x:Name="playTwoStats" Grid.Row="4" Grid.Column="5" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment ="Center" Text="STAS GO HERe" Background="LightGoldenrodYellow"/>
 
         <Button x:Name="attackButton" Grid.Row="6" Grid.Column="3" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment ="Center" Content="ATTACK" Click="AttackButton_Click" Background="RoyalBlue" Foreground="White"/>
-        <Button x:Name="healthButton" Grid.Row="8" Grid.Column="3" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment ="Center" Content="HEALTH" Background="RoyalBlue" Foreground="White"/>
+        <Button x:Name="healthButton" Grid.Row="8" Grid.Column="3" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment ="Center" Content="HEALTH" Click="Use_Health_Potion" Background="RoyalBlue" Foreground="White"/>
 
         <Button x:Name="armourButton" Grid.Row="6" Grid.Column="5" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment ="Center" Content="ARMOUR" Background="RoyalBlue" Foreground="White"/>
         <Button x:Name="weaponButton" Grid.Row="8" Grid.Column="5" Width="150" HorizontalContentAlignment="Center" VerticalContentAlignment ="Center" Content="WEAPON" Click="Weapon_Menu_Click" Background="RoyalBlue" Foreground="White"/>

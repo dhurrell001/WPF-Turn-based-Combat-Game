@@ -69,8 +69,26 @@ namespace WPfF_Turn_based_Game
             {
                 currentPlayer.EquippedWeapon = selectedWeapon;
                 //statusBar.Text = currentPlayer.EquippedWeapon.Type;
-                playOneStats.Text = $"Name : {playerOne.Name}\nHealth : {playerOne.Health}\nStrength : {playerOne.Strength}\n Weapon: {playerOne.EquippedWeapon.Type}";
-                playTwoStats.Text = $"Name : {playerTwo.Name}\nHealth : {playerTwo.Health}\nStrength : {playerTwo.Strength}\n Weapon: {playerTwo.EquippedWeapon.Type}";
+
+            }
+            Display_Stats();
+        }
+        public void Display_Stats()
+        {
+            playOneStats.Text = $"Name : {playerOne.Name}\nHealth : {playerOne.Health}\nStrength : {playerOne.Strength}\n Weapon: {playerOne.EquippedWeapon.Type}";
+            playTwoStats.Text = $"Name : {playerTwo.Name}\nHealth : {playerTwo.Health}\nStrength : {playerTwo.Strength}\n Weapon: {playerTwo.EquippedWeapon.Type}";
+        }
+        public void Use_Health_Potion(object sender, RoutedEventArgs e)
+        {
+            if (currentPlayer.Health_Potion != 0)
+            {
+                currentPlayer.Health += 10;
+                currentPlayer.Health_Potion -= 1;
+                Display_Stats();
+            }
+            else
+            {
+                statusBar.Text = ("You have used all your health potions");
             }
         }
 
